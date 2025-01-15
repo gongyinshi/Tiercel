@@ -511,8 +511,19 @@ extension DownloadTask {
         progress.totalUnitCount = totalBytesExpectedToWrite
         response = downloadTask.response as? HTTPURLResponse
         progressExecuter?.execute(self)
+        
         manager?.updateProgress()
         NotificationCenter.default.postNotification(name: DownloadTask.runningNotification, downloadTask: self)
+
+        guard let manager = manager else {return}
+        var totalBytesExplicated = true
+        for task in manager.tasks {
+            if task.progress.totalUnitCount < 1 {
+                totalBytesExplicated = false
+            }
+        }
+        manager.ytbTotalBytesExplicated = totalBytesExplicated
+        
     }
     
     

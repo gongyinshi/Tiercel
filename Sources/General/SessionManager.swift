@@ -79,6 +79,7 @@ public class SessionManager {
         }
         var session: URLSession?
         var shouldCreatSession: Bool = false
+        var ytbTotalBytesExplicated: Bool = false
         var timer: DispatchSourceTimer?
         var status: Status = .waiting
         var tasks: [DownloadTask] = []
@@ -125,6 +126,10 @@ public class SessionManager {
         set { protectedState.write { $0.shouldCreatSession = newValue } }
     }
 
+    public var ytbTotalBytesExplicated: Bool {
+        get { protectedState.wrappedValue.ytbTotalBytesExplicated }
+        set { protectedState.write { $0.ytbTotalBytesExplicated = newValue } }
+    }
     
     private var timer: DispatchSourceTimer? {
         get { protectedState.wrappedValue.timer }
