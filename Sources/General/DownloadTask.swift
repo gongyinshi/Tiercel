@@ -26,7 +26,7 @@
 
 import UIKit
 
-public class DownloadTask: Task<DownloadTask> {
+public class DownloadTask: TlTask<DownloadTask> {
     
     private enum CodingKeys: CodingKey {
         case resumeData

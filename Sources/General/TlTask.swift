@@ -26,7 +26,7 @@
 
 import Foundation
 
-extension Task {
+extension TlTask {
     public enum Validation: Int {
         case unkown
         case correct
@@ -34,7 +34,7 @@ extension Task {
     }
 }
 
-public class Task<TaskType>: NSObject, Codable {
+public class TlTask<TaskType>: NSObject, Codable {
     
     private enum CodingKeys: CodingKey {
         case url
@@ -309,7 +309,7 @@ public class Task<TaskType>: NSObject, Codable {
 }
 
 
-extension Task {
+extension TlTask {
     @discardableResult
     public func progress(onMainQueue: Bool = true, handler: @escaping Handler<TaskType>) -> Self {
         progressExecuter = Executer(onMainQueue: onMainQueue, handler: handler)
